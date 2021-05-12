@@ -1,8 +1,10 @@
 import FinanceDataReader as fdr
 import matplotlib.pyplot as plt
+import seaborn as sns
 import pandas as pd
 import numpy as np
 
+from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 
@@ -46,11 +48,20 @@ def Prediction(model, stock_test):
     y = stock_test.Close
     x = stock_test.drop('Close', axis=1)
     x = x.drop('Change', axis=1)
-    y_pred = model.predict()
+
+    y_pred = model.predict(x)
+
+    # Visualization
+    plt.figure(figsize=(16, 9))
+    sns.lineplot(y=y, x=x.index)
+    sns.lineplot(y=y_pred, x=x.index)
+    plt.legend(['Real-data', 'Predicted-data'])
+    plt.show()
 
 
 
 if __name__ == '__main__':
     print('start')
     Stock_train, Stock_test = Data_preprocessing()
-    Linear(Stock_train)
+    Model = Linear(Stock_train)
+    Prediction(Model, Stock_test)
