@@ -1,4 +1,6 @@
 # StockPrice Prediction
+2021/1st semester INT_ML term project
+
 ## Dataset
 + Dataset was obtained from FinanceDataReader module
 + FinanceDataReader moduel repo : https://github.com/FinanceData/FinanceDataReader
