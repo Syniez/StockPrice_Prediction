@@ -12,3 +12,4 @@
 ## TODO more
 + Extend model layers
 + Improve predict results (prevent down-shift problem)
++ Write train code by using Python class.
